@@ -29,12 +29,12 @@ namespace SalesCalculator
         // 売上データを読み込み、Saleオブジェクトのリストを返す
         private static IEnumerable<Sale> ReadSales(string filePath)
         {
-            List<Sale> sales = new List<Sale>();    // 空のリストを作成
-            string[] lines = File.ReadAllLines(filePath);   // ファイルの中身を一気に読み込み、配列linesとして保持
-            foreach (string line in lines)
+            var sales = new List<Sale>();    // 空のリストを作成
+            var lines = File.ReadAllLines(filePath);   // ファイルの中身を一気に読み込み、配列linesとして保持
+            foreach (var line in lines)
             {
-                string[] items = line.Split(',');
-                Sale sale = new Sale    // ここでCSVファイルの中身を各プロパティにセットしている(オブジェクト初期化子を利用)
+                var items = line.Split(',');
+                var sale = new Sale    // ここでCSVファイルの中身を各プロパティにセットしている(オブジェクト初期化子を利用)
                 {
                     ShopName = items[0],
                     ProductCategory = items[1],
@@ -47,10 +47,10 @@ namespace SalesCalculator
 
 
         // 店舗別売上を求めるメソッド
-        public SortedDictionary<string, int> GetPerStoreSales()
+        public IDictionary<string, int> GetPerStoreSales()
         {
-            SortedDictionary<string, int> dict = new SortedDictionary<string, int>();
-            foreach (Sale sale in _sales)   // Saleオブジェクトを1行ずつ受け取って処理したいので、"Sale sales in _sales"
+            var dict = new Dictionary<string, int>();
+            foreach (var sale in _sales)   // Saleオブジェクトを1行ずつ受け取って処理したいので、"Sale sales in _sales"
             {
                 if (dict.ContainsKey(sale.ShopName))    // Dictionaryのキーとして、指定した(回ってきたSaleの1行に)店舗名が含まれていれば
                 {

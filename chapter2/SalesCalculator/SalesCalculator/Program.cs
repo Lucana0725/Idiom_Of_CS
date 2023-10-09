@@ -17,10 +17,10 @@ namespace SalesCalculator
              * SaleオブジェクトのリストがSalesCounterのコンストラクタに入りフィールド変数_saleとして格納される。そしてそれらの結果がsalesとしてここで保持される という流れ。
              */
             //SalesCounter sales = new SalesCounter(SalesCounter.ReadSales("sales.csv"));
-            SalesCounter sales = new SalesCounter("sales.csv");
+            var sales = new SalesCounter("sales.csv");
 
-            IDictionary<string, int> amountPerStore = sales.GetPerStoreSales();
-            foreach (KeyValuePair<string, int> obj in amountPerStore)
+            var amountPerStore = sales.GetPerStoreSales();
+            foreach (var obj in amountPerStore)
             {
                 Console.WriteLine($"{obj.Key}：{obj.Value}円");
             }
