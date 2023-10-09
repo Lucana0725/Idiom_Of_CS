@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 namespace SalesCalculator
 {
     // 売上クラス
-    internal class Sales
+    internal class Sale
     {
         // 店舗名
         public string ShopName { get; set; }
